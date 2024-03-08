@@ -33,5 +33,15 @@ public class CarSound : MonoBehaviour
         {
             carAudio.pitch = minPitch;
         }
+
+        if (currentSpeed > minSpeed && currentSpeed < maxSpeed)
+        {
+            carAudio.pitch = minPitch + pitchFromCar;
+        }
+
+        if (currentSpeed > maxSpeed)
+        {
+            carAudio.pitch = maxPitch;
+        }
     }
 }
