@@ -15,11 +15,11 @@ public class CameraFollow : MonoBehaviour
         Vector3 pos = new Vector3();
         pos = car.TransformPoint(moveOffset);
 
-        transform.position = pos; //     Vector3.Lerp(transform.position, pos, moveSmoothness * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, pos, moveSmoothness * Time.deltaTime);
 
         var direction = car.position - transform.position;
         var rotation = new Quaternion();
         rotation = Quaternion.LookRotation(direction + rotOffset, Vector3.up);
-        transform.rotation = rotation; // Quaternion.Lerp(transform.rotation, rotation, rotSmoothness * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotSmoothness * Time.deltaTime);
     }
 }

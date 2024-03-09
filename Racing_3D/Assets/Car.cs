@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Palmmedia.ReportGenerator.Core.Reporting.Builders;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Car : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class Car : MonoBehaviour
     [Serializable] public struct Wheel
     {
         public GameObject wheelModel;
+        public GameObject wheelEffectObj;
+        public ParticleSystem smokeParticle;
         public WheelCollider wheelCollider;
         public Axel axel;
     }
@@ -34,6 +38,8 @@ public class Car : MonoBehaviour
     private float moveInput;
     private float steerInput;
 
+    public TextMeshProUGUI speed;
+
     private void Awake()
     {
         carRigidBody = GetComponent<Rigidbody>();
@@ -46,9 +52,27 @@ public class Car : MonoBehaviour
 
     private void Update()
     {
+        GetInputs();
+        AnimateWheels();
+        WheelEffects();
+
+        speed.text = Mathf.RoundToInt(carRigidBody.velocity.magnitude * 3).ToString();
+    }
+
+    private void LateUpdate()
+    {
+        Move();
+        Steer();
+        Brake();
+    }
+
+    private void GetInputs()
+    {
         moveInput = Input.GetAxis("Vertical");
         steerInput = Input.GetAxis("Horizontal");
-        
+    }
+    private void AnimateWheels()
+    {
         foreach (var wheel in wheels)
         {
             Quaternion rot;
@@ -58,14 +82,32 @@ public class Car : MonoBehaviour
             wheel.wheelModel.transform.rotation = rot;
         }
     }
+    private void WheelEffects()
+    {
+        foreach (var wheel in wheels)
+        {
+            //var dirtParticleMainSettings = wheel.smokeParticle.main;
 
-    private void LateUpdate()
+            if (Input.GetKey(KeyCode.Space) && wheel.axel == Axel.Rear && wheel.wheelCollider.isGrounded == true && carRigidBody.velocity.magnitude >= 10.0f)
+            {
+                wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = true;
+                wheel.smokeParticle.Emit(1);
+            }
+            else
+            {
+                wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = false;
+            }
+        }
+    }
+    private void Move()
     {
         foreach (var wheel in wheels)
         {
             wheel.wheelCollider.motorTorque = moveInput * moveSpeed * maxAcceleration * Time.deltaTime;
         }
-
+    }
+    private void Steer()
+    {
         foreach (var wheel in wheels)
         {
             if (wheel.axel == Axel.Front)
@@ -74,7 +116,9 @@ public class Car : MonoBehaviour
                 wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, steerAngle, 0.6f);
             }
         }
-
+    }
+    private void Brake()
+    {
         if (Input.GetKey(KeyCode.Space))
         {
             foreach (var wheel in wheels)
