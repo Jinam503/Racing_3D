@@ -40,6 +40,8 @@ public class Car : MonoBehaviour
 
     public TextMeshProUGUI speed;
 
+    public float currentSpeed;
+    public float maxSpeed;
     private void Awake()
     {
         carRigidBody = GetComponent<Rigidbody>();
@@ -56,9 +58,7 @@ public class Car : MonoBehaviour
         AnimateWheels();
         WheelEffects();
 
-        speed.text = Mathf.RoundToInt(carRigidBody.velocity.magnitude * 3).ToString();
     }
-
     private void LateUpdate()
     {
         Move();
@@ -105,6 +105,15 @@ public class Car : MonoBehaviour
         {
             wheel.wheelCollider.motorTorque = moveInput * moveSpeed * maxAcceleration * Time.deltaTime;
         }
+        
+        currentSpeed = carRigidBody.velocity.magnitude;
+
+        // 최대 속도를 넘으면 속도를 제한
+        if (currentSpeed > maxSpeed)
+        {
+            // 현재 속도의 방향을 유지한 채로 최대 속도로 조절
+            carRigidBody.velocity = carRigidBody.velocity.normalized * maxSpeed;
+        }
     }
     private void Steer()
     {
@@ -134,4 +143,20 @@ public class Car : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator SpeedUP()
+    {
+        moveSpeed = 3000;
+
+        float t = 0f, speed;
+
+        while (t < 3f)
+        {   
+            speed = Mathf.Lerp(3000, 1000, t / 2f);
+            moveSpeed = speed;
+            t += Time.deltaTime;
+            yield return null;
+        }
+    }
+
 }
