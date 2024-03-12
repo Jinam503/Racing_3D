@@ -9,7 +9,7 @@ public class SpeedReducer : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Car"))
+        if (other.CompareTag("Car"))    
         {
             Car car = other.gameObject.GetComponentInParent<Car>();
 
@@ -17,7 +17,7 @@ public class SpeedReducer : MonoBehaviour
             {
                 foreach (var wheel in car.wheels)
                 {
-                    wheel.wheelCollider.brakeTorque = 3000 * car.breakAcceleration * Time.deltaTime;
+                    wheel.wheelCollider.brakeTorque = 2000 * car.breakAcceleration * Time.deltaTime;
                 }
             }
         }

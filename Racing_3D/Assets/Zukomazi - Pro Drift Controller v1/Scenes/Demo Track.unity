@@ -1009,7 +1009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495443279060062592, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
       propertyPath: m_Mass
-      value: 1000
+      value: 350
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1772,6 +1772,17 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!114 &1646024390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1380651973282293073, guid: 5c1897fa98cbcd8499f80f59dfde1c8c, type: 3}
+  m_PrefabInstance: {fileID: 1071256213}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1903607436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,7 +2009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ac453804e033e47bf716b2d9f37b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 30
+  maxAcceleration: 40
   breakAcceleration: 100
   moveSpeed: 600
   turnVelocity: 0.3
@@ -2025,9 +2036,14 @@ MonoBehaviour:
     smokeParticle: {fileID: 175946910}
     wheelCollider: {fileID: 802195474}
     axel: 1
-  speed: {fileID: 0}
+  speed: {fileID: 1646024390}
   currentSpeed: 0
   maxSpeed: 50
+  extraWheel: 0
+  _6engine: 0
+  _8engine: 1
+  boost: 0
+  rocket: 0
 --- !u!4 &2041451060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2792218741957914664, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}

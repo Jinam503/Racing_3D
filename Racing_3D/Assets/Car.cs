@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class Car : MonoBehaviour
@@ -38,26 +39,33 @@ public class Car : MonoBehaviour
     private float moveInput;
     private float steerInput;
 
-    public TextMeshProUGUI speed;
+    public Text speed;
 
     public float currentSpeed;
     public float maxSpeed;
+
+    public bool extraWheel;
+    public bool _6engine;
+    public bool _8engine;
+    public bool boost;
+    public bool rocket;
+    
     private void Awake()
     {
         carRigidBody = GetComponent<Rigidbody>();
     }
-
     private void Start()
     {
         carRigidBody.centerOfMass = centerOfMass;
     }
-
     private void Update()
     {
         GetInputs();
         AnimateWheels();
         WheelEffects();
+        Items();
 
+        speed.text = Mathf.RoundToInt(carRigidBody.velocity.magnitude).ToString();
     }
     private void LateUpdate()
     {
@@ -97,6 +105,20 @@ public class Car : MonoBehaviour
             {
                 wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = false;
             }
+        }
+    }
+    private void Items()
+    {
+        if (_8engine)
+        {
+            maxSpeed = 70;
+        }
+        else if (_6engine) maxSpeed = 60;
+        else maxSpeed = 50;
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            carRigidBody.AddForce(transform.forward * 3000, ForceMode.Impulse);
         }
     }
     private void Move()
@@ -143,20 +165,4 @@ public class Car : MonoBehaviour
             }
         }
     }
-
-    private IEnumerator SpeedUP()
-    {
-        moveSpeed = 3000;
-
-        float t = 0f, speed;
-
-        while (t < 3f)
-        {   
-            speed = Mathf.Lerp(3000, 1000, t / 2f);
-            moveSpeed = speed;
-            t += Time.deltaTime;
-            yield return null;
-        }
-    }
-
 }
