@@ -1,13 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Item : MonoBehaviour
 {
+    private void Update()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Car"))
+        if (!other.CompareTag("Player"))
             return;
         float randomValue = Random.value * 100f; // 0에서 100 사이의 랜덤 값 생성
 
@@ -26,6 +33,15 @@ public class Item : MonoBehaviour
                 Debug.Log("30% 확률로 동작 5");
                 break;
         }
+
+        GetComponent<MeshRenderer>().enabled = false;
+        StartCoroutine(Regen());
+    }
+
+    IEnumerator Regen()
+    {
+        yield return new WaitForSeconds(2);
+        GetComponent<MeshRenderer>().enabled = true;
     }
 }
 

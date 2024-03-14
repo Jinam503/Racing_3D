@@ -39,7 +39,7 @@ public class Car : MonoBehaviour
     private float moveInput;
     private float steerInput;
 
-    public Text speed;
+    public TextMeshProUGUI speed;
 
     public float currentSpeed;
     public float maxSpeed;
@@ -111,10 +111,10 @@ public class Car : MonoBehaviour
     {
         if (_8engine)
         {
-            maxSpeed = 70;
+            maxSpeed = 50;
         }
-        else if (_6engine) maxSpeed = 60;
-        else maxSpeed = 50;
+        else if (_6engine) maxSpeed = 40;
+        else maxSpeed = 30;
 
         if (Input.GetKeyDown(KeyCode.F))
         {
