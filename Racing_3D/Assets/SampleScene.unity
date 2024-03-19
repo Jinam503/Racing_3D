@@ -766,7 +766,7 @@ WheelCollider:
     m_Stiffness: 1.5
   m_SidewaysFriction:
     m_ExtremumSlip: 1.5
-    m_ExtremumValue: 2
+    m_ExtremumValue: 5
     m_AsymptoteSlip: 1.8
     m_AsymptoteValue: 1.5
     m_Stiffness: 1.5
@@ -1318,7 +1318,7 @@ WheelCollider:
     m_Stiffness: 1.5
   m_SidewaysFriction:
     m_ExtremumSlip: 1.5
-    m_ExtremumValue: 2
+    m_ExtremumValue: 5
     m_AsymptoteSlip: 1.8
     m_AsymptoteValue: 1.5
     m_Stiffness: 1.5
@@ -1755,7 +1755,7 @@ WheelCollider:
     m_Stiffness: 1.5
   m_SidewaysFriction:
     m_ExtremumSlip: 1.5
-    m_ExtremumValue: 2
+    m_ExtremumValue: 5
     m_AsymptoteSlip: 1.8
     m_AsymptoteValue: 1.5
     m_Stiffness: 1.5
@@ -2060,6 +2060,98 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41c8f1f4acdd2f04899f36d07598f92a, type: 3}
+--- !u!1 &1545434203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1545434206}
+  - component: {fileID: 1545434205}
+  - component: {fileID: 1545434204}
+  m_Layer: 0
+  m_Name: w
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!154 &1545434204
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545434203}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_TerrainData: {fileID: 15600000, guid: f87bfca6e9c97c44fb2d06ac09f2b631, type: 2}
+  m_EnableTreeColliders: 1
+--- !u!218 &1545434205
+Terrain:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545434203}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_TerrainData: {fileID: 15600000, guid: f87bfca6e9c97c44fb2d06ac09f2b631, type: 2}
+  m_TreeDistance: 5000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMaximumLOD: 0
+  m_ShadowCastingMode: 2
+  m_DrawHeightmap: 1
+  m_DrawInstanced: 0
+  m_DrawTreesAndFoliage: 1
+  m_StaticShadowCaster: 0
+  m_IgnoreQualitySettings: 0
+  m_ReflectionProbeUsage: 1
+  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_BakeLightProbesForTrees: 1
+  m_PreserveTreePrototypeLayers: 0
+  m_DeringLightProbesForTrees: 1
+  m_ReceiveGI: 1
+  m_ScaleInLightmap: 0.0256
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+  m_GroupingID: 0
+  m_RenderingLayerMask: 1
+  m_AllowAutoConnect: 1
+  m_EnableHeightmapRayTracing: 1
+  m_EnableTreesAndDetailsRayTracing: 0
+  m_TreeMotionVectorModeOverride: 3
+--- !u!4 &1545434206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545434203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1098, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1686419480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 619352566560569914, guid: e85a24cdf6364cf4da913adad751090e, type: 3}
@@ -2383,7 +2475,7 @@ WheelCollider:
     m_Stiffness: 1.5
   m_SidewaysFriction:
     m_ExtremumSlip: 1.5
-    m_ExtremumValue: 2
+    m_ExtremumValue: 5
     m_AsymptoteSlip: 1.8
     m_AsymptoteValue: 1.5
     m_Stiffness: 1.5
@@ -3314,8 +3406,8 @@ MonoBehaviour:
   maxAcceleration: 50
   breakAcceleration: 200
   moveSpeed: 800
-  turnVelocity: 0.6
-  maxSteerAngle: 40
+  turnVelocity: 0.5
+  maxSteerAngle: 30
   centerOfMass: {x: 0, y: 0, z: 0}
   wheels:
   - wheelModel: {fileID: 272261726818951580}
@@ -3702,3 +3794,4 @@ SceneRoots:
   - {fileID: 4003636291293550492}
   - {fileID: 1338162132}
   - {fileID: 931723905}
+  - {fileID: 1545434206}

@@ -66,6 +66,12 @@ public class Car : MonoBehaviour
         Items();
 
         speed.text = Mathf.RoundToInt(carRigidBody.velocity.magnitude).ToString();
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            
+            Debug.Log(wheels[0].wheelCollider.motorTorque);
+        }
     }
     private void LateUpdate()
     {
